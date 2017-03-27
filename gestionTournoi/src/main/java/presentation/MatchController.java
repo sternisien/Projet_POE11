@@ -57,11 +57,6 @@ public class MatchController implements Serializable {
 		lstEpreuves = new ArrayList<Epreuve>();
 		lesMatchs = new ArrayList<MatchTennis>();
 	}
-	
-	public String affichagePagePlanifierMatch() {
-		
-		return "planning";
-	}
 
 
 	//*********** Setters / Getters ***********

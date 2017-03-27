@@ -52,10 +52,6 @@ public class ArbitreController implements Serializable {
 		
 	}
 
-	public String affichagePageEnregistrerArbitre() {
-
-		return "arbitre";
-	}
 
 	// *********** Setters / Getters ***********
 

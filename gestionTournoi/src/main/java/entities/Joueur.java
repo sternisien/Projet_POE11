@@ -39,14 +39,11 @@ public class Joueur {
 	/**
 	 * Instance de {@link enum.Sexe} correspondant au genre d'un joueur.
 	 */
-	@Column(name = "sexe", length = 50)
 	public String sexe;
 
 	/**
 	 * Instance de {@link Nation} correspondant à la nationnalité  d'un joueur.
 	 */
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idnation")
 	public Nation nation;
 
 	/**
@@ -106,18 +103,5 @@ public class Joueur {
 		this.sexe = sexe;
 	}
 
-	/**
-	 * @return Instance de {@link Nation}:
-	 */
-	public Nation getNation() {
-		return nation;
-	}
-
-	/**
-	 * @param nation Instance de {@link Nation}
-	 */
-	public void setNation(Nation nation) {
-		this.nation = nation;
-	}
 
 }

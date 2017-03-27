@@ -11,12 +11,10 @@ import javax.persistence.Table;
 @Table(name = "epreuve")
 public class Epreuve {
 
-	@Id
-	@Column(name = "idepreuve", nullable = false, unique = true)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public Integer idepreuve;
 	
-	@Column(name = "nomepreuve", length = 50)
+
 	public String nomepreuve;
 
 	public Epreuve(String nomepreuve) {

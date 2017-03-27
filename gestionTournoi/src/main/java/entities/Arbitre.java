@@ -18,30 +18,28 @@ import javax.persistence.Table;
 @Table(name = "arbitre")
 public class Arbitre {
 	
-	@Id
-	@Column(name = "idarbitre", nullable = false, unique = true)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	public Integer idarbitre;
 	
 	/**
 	 * Instance de {@link String} correspondant au nom d'un arbitre.
 	 */
-	@Column(name = "nom", length = 50)
+
 	public String nom;
 	
 	/**
 	 * Instance de {@link String} correspondant au prénom d'un arbitre.
 	 */
-	@Column(name = "prenom", length = 50)
+	
 	public String prenom;
 	
 	/**
 	 * Instance de {@link String} correspondant au niveau d'un arbitre.
 	 */
-	@Column(name = "niveau", length = 50)
+	
 	public String niveau;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	
 	public Nation nation;
 
 	public Arbitre(String nom, String prenom, String niveau, Nation nation) {

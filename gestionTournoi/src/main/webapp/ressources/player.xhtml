@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Roland Garros</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		rel="stylesheet" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link href="../css/cssCommun.css" rel="stylesheet" />
+</h:head>
+<h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<ui:include src="jumbotron.xhtml"></ui:include>
+			</div>
+			<ui:include src="list.xhtml"></ui:include>
+			<div class="col-md-8">
+				<h:form>
+					<div class="form-group">
+						<h:outputLabel>Nom</h:outputLabel>
+						<h:inputText id="nom" class="form-control"
+							value="#{joueurController.nom}" placeholder="Nom"></h:inputText>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Prenom</h:outputLabel>
+						<h:inputText id="prenom" class="form-control"
+							value="#{joueurController.prenom}" placeholder="Prenom"></h:inputText>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Sexe</h:outputLabel>
+						<h:inputText id="sexe" class="form-control"
+							value="#{joueurController.sexe}" placeholder="Sexe"></h:inputText>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Sexe</h:outputLabel>
+						<h:inputText id="nation" class="form-control"
+							value="#{joueurController.nationalite}" placeholder="nation"></h:inputText>
+					</div>
+					<h:commandButton class="btn btn-primary" value="Enregistrer"
+						action="#{joueurController.traitementJoueur}"></h:commandButton>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+
+</html>

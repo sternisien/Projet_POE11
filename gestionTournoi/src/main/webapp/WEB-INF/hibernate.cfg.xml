@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- MySQL database -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- show SQL in console -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- readable format for SQL output in the console -->
+        <property name="format_sql">true</property>
+    </session-factory>
+</hibernate-configuration>

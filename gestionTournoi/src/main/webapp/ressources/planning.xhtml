@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Roland Garros</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		rel="stylesheet" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link href="../css/cssCommun.css" rel="stylesheet" />
+</h:head>
+<h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<ui:include src="jumbotron.xhtml"></ui:include>
+			</div>
+			<div class="col-md-4">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="entete">Liste des courts</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Court 1</td>
+						</tr>
+						<tr>
+							<td>Court 2</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-8">
+				<h:form>
+					<div class="form-group">
+						<h:outputLabel>Tournoi</h:outputLabel>
+						<h:selectOneMenu class="form-control">
+							<f:selectItem itemLabel="coupe des mousquetaires"></f:selectItem>
+							<f:selectItem itemLabel="coupe suzanne lenglen"></f:selectItem>
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Joueur 1</h:outputLabel>
+						<h:selectOneMenu class="form-control" value="#{planningMatchController.data}">
+							<c:forEach var="joueur" items="#{homeController.lesJoueurs}" varStatus="idx">
+								<f:selectItem itemValue="${idx.index}" itemLabel="#{joueur}" ></f:selectItem>
+							</c:forEach>
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Joueur 2</h:outputLabel>
+						<h:selectOneMenu class="form-control" value="#{planningMatchController.data}">
+							<c:forEach var="joueur" items="#{homeController.lesJoueurs}" varStatus="idx">
+								<f:selectItem itemValue="${idx.index}" itemLabel="#{joueur}" ></f:selectItem>
+							</c:forEach>
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Arbitre</h:outputLabel>
+						<h:selectOneMenu class="form-control">
+							<f:selectItem itemLabel="Court Philippe Chatrier"></f:selectItem>
+							<f:selectItem itemLabel="Court Suzanne Lenglen"></f:selectItem>
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Date</h:outputLabel>
+						<p:calendar id="inline" value="#{planningMatchController.date}"
+							mode="inline" />
+					</div>
+					<h:commandButton class="btn btn-primary btnConnexion"
+						value="Enregistrer" action="#{planningMatchController.traitement}"></h:commandButton>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

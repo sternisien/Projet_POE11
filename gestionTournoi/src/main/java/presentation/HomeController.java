@@ -9,6 +9,8 @@ import javax.faces.bean.SessionScoped;
 
 import org.springframework.stereotype.Component;
 
+import entities.Sexe;
+
 @Component
 @ManagedBean(name="homeController")
 @SessionScoped
@@ -21,6 +23,7 @@ public class HomeController implements Serializable {
 	private String entete;
 	private List<String> lesJoueurs;
 	private List<String> list;
+	private List<String> lstSexe;
 	
 	//*********** Constructor ***********
 	
@@ -87,25 +90,7 @@ public class HomeController implements Serializable {
 		return "home";
 	}
 	
-	public String affichagePageAjoutJoueur() {
 
-		title = "Enregistrement d'un nouveau joueur";
-		description = "Enregistrer un nouveau joueur en indiquant son nom, son prénom," + "son sexe et sa nationalité.";
-		entete = "Liste des joueurs";
-		list = new ArrayList<String>();
-		list.add("novak djokovic");
-		return "player";
-	}
-
-	public String affichagePageEnregistrerArbitre() {
-
-		title = "Enregistrement des arbitres";
-		description = "Enregistrer un nouvel arbitre en indiquant son nom,son "
-				+ "prénom, sa nationalité et son niveau(chaise ou ligne).";
-		entete = "Liste des arbitres";
-
-		return "arbitre";
-	}
 
 	public String affichagePageEnregistrerCourt() {
 

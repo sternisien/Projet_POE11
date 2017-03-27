@@ -28,8 +28,9 @@
 				<h2 class="msgDeco">Déconnexion effectuée avec succés</h2>
 				<div class="linkConnect">
 					<h:form>
-						<a href="#"><span class=" glyphicon glyphicon-menu-right"></span>Se
-							Connecter</a>
+						<span class=" glyphicon glyphicon-menu-right"></span>
+						<h:commandLink value="Se Connecter"
+							action="#{connectionController.reconnection}"></h:commandLink>
 					</h:form>
 				</div>
 			</div>

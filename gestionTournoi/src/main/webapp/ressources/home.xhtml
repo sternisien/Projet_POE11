@@ -37,7 +37,7 @@
 						<div class="thumbnail img-responsive thumbnailMenuGeneral">
 							<h:form>
 								<h:commandLink value=""
-									action="#{joueurController.affichagePageAjoutJoueur}">
+									action="#{joueurController.init}">
 									<img src="../img/nadal.jpg" alt="..." />
 								</h:commandLink>
 							</h:form>
@@ -45,14 +45,14 @@
 						</div>
 						<h:form>
 							<h:commandLink value="Enregistrer des joueurs"
-								action="#{joueurController.affichagePageAjoutJoueur}"></h:commandLink>
+								action="#{joueurController.init}"></h:commandLink>
 						</h:form>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail img-responsive thumbnailMenuGeneral">
 							<h:form>
 								<h:commandLink value=""
-									action="#{arbitreController.affichagePageEnregistrerArbitre}">
+									action="#{arbitreController.init}">
 									<img src="../img/arbitre.jpg" alt="..." />
 								</h:commandLink>
 							</h:form>
@@ -60,14 +60,14 @@
 						</div>
 						<h:form>
 							<h:commandLink value="Enregistrer des arbitres"
-								action="#{arbitreController.affichagePageEnregistrerArbitre}"></h:commandLink>
+								action="#{arbitreController.init}"></h:commandLink>
 						</h:form>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail img-responsive thumbnailMenuGeneral">
 							<h:form>
 								<h:commandLink value=""
-									action="#{courtController.affichagePageEnregistrerCourt}">
+									action="#{courtController.init}">
 									<img src="../img/rolandGarros.jpg" alt="..." />
 								</h:commandLink>
 							</h:form>
@@ -75,14 +75,14 @@
 						</div>
 						<h:form>
 							<h:commandLink value="Enregistrer des Courts"
-								action="#{courtController.affichagePageEnregistrerCourt}"></h:commandLink>
+								action="#{courtController.init}"></h:commandLink>
 						</h:form>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail img-responsive thumbnailMenuGeneral">
 							<h:form>
 								<h:commandLink value=""
-									action="#{matchController.affichagePagePlanifierMatch}">
+									action="#{matchController.init}">
 									<img src="../img/planning.jpg" alt="..." />
 								</h:commandLink>
 							</h:form>
@@ -90,14 +90,14 @@
 						</div>
 						<h:form>
 							<h:commandLink value="Planifier des matchs"
-								action="#{matchController.affichagePagePlanifierMatch}"></h:commandLink>
+								action="#{matchController.init}"></h:commandLink>
 						</h:form>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail img-responsive thumbnailMenuGeneral">
 							<h:form>
 								<h:commandLink value=""
-									action="#{homeController.affichagePageEnregisterResultat}">
+									action="#{resultatController.init}">
 									<img src="../img/scoreboard.jpg" alt="..." />
 								</h:commandLink>
 							</h:form>
@@ -105,13 +105,13 @@
 						</div>
 						<h:form>
 							<h:commandLink value="Enregistrer des résulats de matchs"
-								action="#{homeController.affichagePageEnregisterResultat}"></h:commandLink>
+								action="#{resultatController.init}"></h:commandLink>
 						</h:form>
 					</div>
 					<div class="col-md-4">
 						<div class="thumbnail img-responsive thumbnailMenuGeneral">
 							<h:form>
-								<h:commandLink value="" action="#{homeController.deconnexion}">
+								<h:commandLink value="" action="#{connectionController.deconnection}">
 									<img src="../img/logout.png" alt="..." />
 								</h:commandLink>
 							</h:form>

@@ -73,19 +73,7 @@ public class MatchController implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 	
-	
-	//*********** Actions ***********
-		
-	public String init() {
-		return "match";
-	}
-	
-	public String traitement(){
-		return "planning";
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -189,5 +177,18 @@ public class MatchController implements Serializable {
 	public void setIndexCourt(int indexCourt) {
 		this.indexCourt = indexCourt;
 	}
+	
+	
+	//*********** Actions ***********
+		
+	public String init() {
+		return "match";
+	}
+	
+	public String traitement(){
+		return "match";
+	}
+
+
 	
 }

@@ -75,7 +75,12 @@ public class ConnectionController implements Serializable {
 	
 	public String deconnection() {
 
-		return "deconnection";
+		return "ressouces/deconnection";
+	}
+	
+	public String reconnection(){
+		
+		return "../connection";
 	}
 	
 }

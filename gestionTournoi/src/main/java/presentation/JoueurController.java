@@ -55,10 +55,6 @@ public class JoueurController implements Serializable {
 		setEntete("Liste des joueurs");
 	}
 
-	public String affichagePageAjoutJoueur() {
-
-		return "player";
-	}
 
 	// *********** Setters / Getters ***********
 
@@ -93,22 +89,7 @@ public class JoueurController implements Serializable {
 	public void setNationalite(String nation) {
 		this.nationalite = nation;
 	}
-
-	// *********** Actions ***********
-
-	public String init() {
-		return "player";
-	}
-
-	public String traitementJoueur() {
-		
-		if (Sexe.HOMME.toString().equals(sexe) || Sexe.FEMME.toString().equals(sexe)) {
-			gestionJoueur.ajoutJoueur(this.nom, this.prenom, new Nation(this.nationalite), Sexe.valueOf(this.sexe));
-		}
-
-		return "player";
-	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -164,5 +145,22 @@ public class JoueurController implements Serializable {
 	public void setLstJoueur(List<Joueur> lstJoueur) {
 		this.lstJoueur = lstJoueur;
 	}
+
+
+	// *********** Actions ***********
+
+	public String init() {
+		return "player";
+	}
+
+	public String traitementJoueur() {
+		
+		if (Sexe.HOMME.toString().equals(sexe) || Sexe.FEMME.toString().equals(sexe)) {
+			gestionJoueur.ajoutJoueur(this.nom, this.prenom, new Nation(this.nationalite), Sexe.valueOf(this.sexe));
+		}
+
+		return "player";
+	}
+
 
 }

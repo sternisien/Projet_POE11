@@ -39,11 +39,6 @@ public class CourtController implements Serializable {
 		lstCourts = new ArrayList<Court>();
 	}
 
-	public String affichagePageEnregistrerCourt() {
-
-		return "court";
-	}
-
 	// *********** Setters / Getters ***********
 
 	public String getCourt() {
@@ -53,20 +48,7 @@ public class CourtController implements Serializable {
 	public void setCourt(String court) {
 		this.court = court;
 	}
-
-	// *********** Actions ***********
-
-	public String init() {
-		return "court";
-	}
-
-	public String traitementCourt() {
-
-		// TODO
-
-		return "court";
-	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -98,5 +80,20 @@ public class CourtController implements Serializable {
 	public void setLstCourts(List<Court> lstCourts) {
 		this.lstCourts = lstCourts;
 	}
+
+	// *********** Actions ***********
+
+	public String init() {
+		return "court";
+	}
+
+	public String traitementCourt() {
+
+		return "court";
+	}
+
+
+	
+	
 
 }

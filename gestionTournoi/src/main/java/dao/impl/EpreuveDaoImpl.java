@@ -2,6 +2,8 @@ package dao.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,6 +12,7 @@ import dao.EpreuveDao;
 import entities.Epreuve;
 
 @Repository("epreuveDao")
+@Transactional
 public class EpreuveDaoImpl implements EpreuveDao {
 	
     @Autowired
@@ -27,25 +30,21 @@ public class EpreuveDaoImpl implements EpreuveDao {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	@Override
 	public void insert(Epreuve epreuve) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void update(Epreuve epreuve) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void delete(Epreuve epreuve) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public List<Epreuve> selectAll() {
 		// TODO Auto-generated method stub
 		return null;

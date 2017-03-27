@@ -45,8 +45,6 @@ public class Joueur {
 	/**
 	 * Instance de {@link Nation} correspondant à la nationnalité  d'un joueur.
 	 */
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idnation")
 	public Nation nation;
 
 	/**
@@ -119,4 +117,5 @@ public class Joueur {
 	public void setNation(Nation nation) {
 		this.nation = nation;
 	}
+	
 }

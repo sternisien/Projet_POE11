@@ -16,7 +16,7 @@ public class Equipe {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer idequipe;
 	
-	@Column(name = "nomequipe", length = 50)
+
 	public String nomequipe;
 
 	public Equipe(String nomequipe) {

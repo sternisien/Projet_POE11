@@ -15,26 +15,23 @@ import javax.persistence.Table;
 @Table(name = "match_tennis")
 public class MatchTennis {
 
-	@Id
-	@Column(name = "idmatch", nullable = false, unique = true)
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer idmatch;
 	
-	@ManyToOne
+	
 	public Court court;
 	
-	@ManyToOne
+	
 	public Arbitre arbitre;
 	
-	@OneToOne
+
 	public Epreuve epreuve;
 	
-	@Column(name = "date", length = 50)
+	
 	public Date date;
 	
-	@Column(name = "duree", length = 50)
+
 	public String duree;
 	
-	@Column(name = "etat", length = 50)
+
 	public String etat;
 }

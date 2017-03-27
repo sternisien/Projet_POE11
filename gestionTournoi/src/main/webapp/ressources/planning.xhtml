@@ -28,22 +28,28 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<ui:include src="jumbotron.xhtml"></ui:include>
+				<div class="jumbotron">
+					<h1>#{matchController.title}</h1>
+					<p>#{matchController.description}</p>
+				</div>
 			</div>
 			<div class="col-md-4">
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th class="entete">Liste des courts</th>
+							<th class="entete">#{matchController.entete}</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Court 1</td>
-						</tr>
-						<tr>
-							<td>Court 2</td>
-						</tr>
+						<c:forEach var="match" items="#{matchController.lesMatchs}">
+							<tr>
+								<td>${match.nom} ${match.date} ${match.court.nom} <c:forEach
+										var="joueur" items="match.lesJoueurs">
+									${joueur.nom} vs
+								</c:forEach> ${match.arbitre.nom}
+								</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -51,41 +57,66 @@
 				<h:form>
 					<div class="form-group">
 						<h:outputLabel>Tournoi</h:outputLabel>
-						<h:selectOneMenu class="form-control">
-							<f:selectItem itemLabel="coupe des mousquetaires"></f:selectItem>
-							<f:selectItem itemLabel="coupe suzanne lenglen"></f:selectItem>
+						<h:selectOneMenu class="form-control"
+							value="#{matchController.indexEpreuve}">
+							<c:forEach var="epreuve" items="#{matchController.lstEpreuves}"
+								varStatus="idx">
+								<f:selectItem itemValue="${idx.index}"
+									itemLabel="#{epreuve.nomEpreuve}"></f:selectItem>
+							</c:forEach>
 						</h:selectOneMenu>
 					</div>
 					<div class="form-group">
 						<h:outputLabel>Joueur 1</h:outputLabel>
-						<h:selectOneMenu class="form-control" value="#{planningMatchController.data}">
-							<c:forEach var="joueur" items="#{homeController.lesJoueurs}" varStatus="idx">
-								<f:selectItem itemValue="${idx.index}" itemLabel="#{joueur}" ></f:selectItem>
+						<h:selectOneMenu class="form-control"
+							value="#{matchController.indexJoueur1}">
+							<c:forEach var="joueur" items="#{matchController.lesJoueurs}"
+								varStatus="idx">
+								<f:selectItem itemValue="${idx.index}"
+									itemLabel="#{joueur.nom} #{joueur.prenom}"></f:selectItem>
 							</c:forEach>
 						</h:selectOneMenu>
 					</div>
 					<div class="form-group">
 						<h:outputLabel>Joueur 2</h:outputLabel>
-						<h:selectOneMenu class="form-control" value="#{planningMatchController.data}">
-							<c:forEach var="joueur" items="#{homeController.lesJoueurs}" varStatus="idx">
-								<f:selectItem itemValue="${idx.index}" itemLabel="#{joueur}" ></f:selectItem>
+						<h:selectOneMenu class="form-control"
+							value="#{matchController.indexJoueur2}">
+							<c:forEach var="joueur" items="#{matchController.lesJoueurs}"
+								varStatus="idx">
+								<f:selectItem itemValue="${idx.index}"
+									itemLabel="#{joueur.nom} #{joueur.prenom}"></f:selectItem>
 							</c:forEach>
 						</h:selectOneMenu>
 					</div>
 					<div class="form-group">
 						<h:outputLabel>Arbitre</h:outputLabel>
-						<h:selectOneMenu class="form-control">
-							<f:selectItem itemLabel="Court Philippe Chatrier"></f:selectItem>
-							<f:selectItem itemLabel="Court Suzanne Lenglen"></f:selectItem>
+						<h:selectOneMenu class="form-control"
+							value="#{matchController.indexArbitre}">
+							<c:forEach var="arbitre" items="#{matchController.lesArbitres}"
+								varStatus="idx">
+								<f:selectItem itemValue="${idx.index}"
+									itemLabel="#{arbitre.nom} #{arbitre.prenom}"></f:selectItem>
+							</c:forEach>
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<h:outputLabel>Arbitre</h:outputLabel>
+						<h:selectOneMenu class="form-control"
+							value="#{matchController.indexCourt}">
+							<c:forEach var="court" items="#{matchController.lesCourts}"
+								varStatus="idx">
+								<f:selectItem itemValue="${idx.index}"
+									itemLabel="#{court.nom}"></f:selectItem>
+							</c:forEach>
 						</h:selectOneMenu>
 					</div>
 					<div class="form-group">
 						<h:outputLabel>Date</h:outputLabel>
-						<p:calendar id="inline" value="#{planningMatchController.date}"
+						<p:calendar id="inline" value="#{matchController.date}"
 							mode="inline" />
 					</div>
 					<h:commandButton class="btn btn-primary btnConnexion"
-						value="Enregistrer" action="#{planningMatchController.traitement}"></h:commandButton>
+						value="Enregistrer" action="#{matchController.traitement}"></h:commandButton>
 				</h:form>
 			</div>
 		</div>

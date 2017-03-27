@@ -14,6 +14,7 @@ import entities.Joueur;
 import entities.Nation;
 import entities.Sexe;
 import job.GestionJoueur;
+import job.GestionNation;
 import job.JobException;
 
 @Component
@@ -25,6 +26,9 @@ public class JoueurController implements Serializable {
 
 	@Autowired
 	GestionJoueur gestionJoueur;
+	
+	@Autowired
+	GestionNation gestionNation;
 
 	// OUTPUT
 	private List<String> lstSexe;
@@ -32,11 +36,11 @@ public class JoueurController implements Serializable {
 	private List<Joueur> lstJoueur;
 	
 	// INPUT
-	private String nom;
-	private String prenom;
-	private String sexe;
-	private String nationalite;
-	private int indexNation;
+	private String 	nom;
+	private String 	prenom;
+	private String 	sexe;
+	private String 	nationalite;
+	private int 	indexNation;
 	
 	// Liste de messages d'erreur
 	private List<String> listErrorMsg = new ArrayList<String>();
@@ -52,25 +56,16 @@ public class JoueurController implements Serializable {
 	public JoueurController() {
 		super();
 
-		// Récupération de la liste des joueurs
-		/*
-		try {
-			this.lstJoueur = gestionJoueur.getAllJoueurs();
-		} catch (JobException jobEx) {
-			this.listErrorMsg.add(jobEx.getMessage());
-		}
-		*/
-		
 		// Ajout des genres
 		lstSexe = new ArrayList<String>();
 		lstSexe.add("HOMME");
 		lstSexe.add("FEMME");
 		
-		lstNation = new ArrayList<Nation>();
+		this.lstNation = new ArrayList<Nation>();
+		this.lstJoueur = new ArrayList<Joueur>();
 
 		setTitle("Enregistrement d'un nouveau joueur");
-		setDescription(
-				"Enregistrer un nouveau joueur en indiquant son nom, son prénom," + "son sexe et sa nationalité.");
+		setDescription("Enregistrer un nouveau joueur en indiquant son nom, son prénom," + "son sexe et sa nationalité.");
 		setEntete("Liste des joueurs");
 	}
 
@@ -142,6 +137,15 @@ public class JoueurController implements Serializable {
 	}
 
 	public List<Nation> getLstNation() {
+		
+		// Récupération de la liste des nations
+		try {
+			this.lstNation = gestionNation.getAllNations();
+		} catch (JobException jobEx) {
+			this.lstNation = new ArrayList<Nation>();
+			this.listErrorMsg.add(jobEx.getMessage());			
+		}
+		
 		return lstNation;
 	}
 
@@ -158,7 +162,16 @@ public class JoueurController implements Serializable {
 	}
 
 	public List<Joueur> getLstJoueur() {
-		return lstJoueur;
+		
+		// Récupération de la liste des joueurs
+		try {
+			this.lstJoueur = gestionJoueur.getAllJoueurs();
+		} catch (JobException jobEx) {
+			this.lstJoueur = new ArrayList<Joueur>();
+			this.listErrorMsg.add(jobEx.getMessage());
+		}
+		
+		return this.lstJoueur;
 	}
 
 	public void setLstJoueur(List<Joueur> lstJoueur) {
@@ -178,11 +191,7 @@ public class JoueurController implements Serializable {
 	// *********** Actions ***********
 
 	public String init() {
-		return "player";
-	}
-
-	public String affichagePageAjoutJoueur() {
-
+					
 		return "player";
 	}
 
@@ -190,23 +199,12 @@ public class JoueurController implements Serializable {
 		
 		if (Sexe.HOMME.toString().equals(sexe) || Sexe.FEMME.toString().equals(sexe)) {
 			try {
-				gestionJoueur.ajoutJoueur(this.nom, this.prenom, new Nation(this.nationalite), this.sexe);
+				gestionJoueur.ajoutJoueur(this.nom, this.prenom, this.lstNation.get(this.indexNation), this.sexe);
 			} catch (JobException jobEx) {
 				this.listErrorMsg.add(jobEx.getMessage());
 			}
 		}
 
-		return "player";
-	}
-	
-	public String actualiserListeJoueurs() {
-		
-		try {
-			this.lstJoueur = gestionJoueur.getAllJoueurs();
-		} catch (JobException jobEx) {
-			this.listErrorMsg.add(jobEx.getMessage());
-		}
-		
 		return "player";
 	}
 

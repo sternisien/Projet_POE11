@@ -11,22 +11,17 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import dao.JoueurDao;
-import entities.Joueur;
+import dao.NationDao;
+import entities.Nation;
 
-/**
- * Classe de persistence de données des entités {@link Joueur}
- * 
- * @see JoueurDao
- */
-@Repository("joueurDao")
+@Repository("nationDao")
 @Transactional
-public class JoueurDaoImpl implements JoueurDao{
+public class NationDaoImpl implements NationDao {
 	
     @Autowired
     private SessionFactory sessionFactory;
 	
-	public JoueurDaoImpl() {
+	public NationDaoImpl() {
 		super();
 	}
 
@@ -39,19 +34,19 @@ public class JoueurDaoImpl implements JoueurDao{
 	}
 	
 	/**
-	 * Insert l'entité Joueur en base de données
+	 * Insert l'entité Nation en base de données
 	 * 
-	 * @see JoueurDao
-	 * @param joueur {@link Joueur} 
+	 * @see NationDao
+	 * @param nation {@link Nation} 
 	 * @throws transactionEx {@link RuntimeException} : Exception en cas d'échec de la transaction
 	 */
-	public void insert(Joueur joueur) {
+	public void insert(Nation nation) {
 		
 		Session session = sessionFactory.openSession();
 		
 		try {
 			session.getTransaction().begin();
-			session.save(joueur);
+			session.save(nation);
 			session.getTransaction().commit();
 		}
 		catch (RuntimeException transactionEx) {
@@ -64,19 +59,19 @@ public class JoueurDaoImpl implements JoueurDao{
 	}
 	
 	/**
-	 * Mise à jour de l'entité Joueur en base de données
+	 * Mise à jour de l'entité Nation en base de données
 	 * 
-	 * @see JoueurDao
-	 * @param joueur {@link Joueur} 
+	 * @see NationDao
+	 * @param nation {@link Nation} 
 	 * @throws transactionEx {@link RuntimeException} : Exception en cas d'échec de la transaction
 	 */
-	public void update(Joueur joueur) {
+	public void update(Nation nation) {
 		
 		Session session = sessionFactory.openSession();
 		
 		try {
 			session.getTransaction().begin();
-			session.update(joueur);
+			session.update(nation);
 			session.getTransaction().commit();
 		}
 		catch (RuntimeException transactionEx) {
@@ -89,19 +84,19 @@ public class JoueurDaoImpl implements JoueurDao{
 	}
 
 	/**
-	 * Suppression de l'entité Joueur en base de données
+	 * Suppression de l'entité Nation en base de données
 	 * 
-	 * @see JoueurDao
-	 * @param joueur {@link Joueur} 
+	 * @see NationDao
+	 * @param nation {@link Nation} 
 	 * @throws transactionEx {@link RuntimeException} : Exception en cas d'échec de la transaction
 	 */
-	public void delete(Joueur joueur) {
+	public void delete(Nation nation) {
 		
 		Session session = sessionFactory.openSession();
 		
 		try {
 			session.getTransaction().begin();
-			session.delete(joueur);
+			session.delete(nation);
 			session.getTransaction().commit();
 		}
 		catch (RuntimeException transactionEx) {
@@ -114,22 +109,22 @@ public class JoueurDaoImpl implements JoueurDao{
 	}
 
 	/**
-	 * Récupération de toute les entités Joueur en base de données
+	 * Récupération de toute les entités Nation en base de données
 	 * 
-	 * @see JoueurDao
-	 * @return {@link List} < {@link Joueur} >
+	 * @see NationDao
+	 * @return {@link List} < {@link Nation} >
 	 * @throws transactionEx {@link RuntimeException} : Exception en cas d'échec de la transaction
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Joueur> selectAll(){
+	public List<Nation> selectAll(){
 		
 		Session session = sessionFactory.openSession();
-		List<Joueur> lstJoueurs = new ArrayList<Joueur>();
+		List<Nation> lstNations = new ArrayList<Nation>();
 				
 		try {
 			session.getTransaction().begin();
-			Criteria criteria = session.createCriteria(Joueur.class);
-			lstJoueurs = (List<Joueur>) criteria.list();
+			Criteria criteria = session.createCriteria(Nation.class);
+			lstNations = (List<Nation>) criteria.list();
 			session.getTransaction().commit();
 		}
 		catch (RuntimeException transactionEx) {
@@ -140,9 +135,7 @@ public class JoueurDaoImpl implements JoueurDao{
 			session.close();
 		}	
 		
-		System.out.println(lstJoueurs.toString());
-		
-		return lstJoueurs;
+		return lstNations;
 	}
-	
+
 }

@@ -177,11 +177,11 @@ public class MatchController implements Serializable {
 	//*********** Actions ***********
 		
 	public String init() {
-		return "match";
+		return "planning";
 	}
 	
 	public String traitement(){
-		return "match";
+		return "planning";
 	}
 
 

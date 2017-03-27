@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Classe entitÃ© reprÃ©sentant un Joueur
+ * Classe entité représentant un Joueur
  * 
  * @class Joueur
  */
@@ -31,7 +31,7 @@ public class Joueur {
 	public String nom;
 
 	/**
-	 * Instance de {@link String} correspondant au prÃ©nom d'un joueur.
+	 * Instance de {@link String} correspondant au prénom d'un joueur.
 	 */
 	@Column(name = "prenom", length = 50)
 	public String prenom;
@@ -39,18 +39,18 @@ public class Joueur {
 	/**
 	 * Instance de {@link enum.Sexe} correspondant au genre d'un joueur.
 	 */
-	@Column(name = "sexe", length = 50)
-	public String sexe;
+	@Column(name = "sexe")
+	public Sexe sexe;
 
 	/**
-	 * Instance de {@link Nation} correspondant Ã  la nationnalitÃ©  d'un joueur.
+	 * Instance de {@link Nation} correspondant à la nationnalité  d'un joueur.
 	 */
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idnation")
 	public Nation nation;
 
 	/**
-	 * Constructeur Ã  vide de Joueur
+	 * Constructeur à vide de Joueur
 	 */
 	public Joueur() {
 		super();
@@ -62,13 +62,13 @@ public class Joueur {
 	 * @param nom
 	 *            nom
 	 * @param prenom
-	 *            prÃ©nom
+	 *            prénom
 	 * @param sexe
 	 *            genre (HOMME / FEMME)
 	 * @param nation
-	 *            nationnalitÃ©
+	 *            nationnalité
 	 */
-	public Joueur(String nom, String prenom, String sexe, Nation nation) {
+	public Joueur(String nom, String prenom, Sexe sexe, Nation nation) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -95,14 +95,14 @@ public class Joueur {
 	/**
 	 * @return Retourne le genre du joueur (HOMME / FEMME)
 	 */
-	public String getSexe() {
+	public Sexe getSexe() {
 		return sexe;
 	}
 
 	/**
-	 * @param sexe RedÃ©finit le genre du joueur (HOMME / FEMME)
+	 * @param sexe Redéfinit le genre du joueur (HOMME / FEMME)
 	 */
-	public void setSexe(String sexe) {
+	public void setSexe(Sexe sexe) {
 		this.sexe = sexe;
 	}
 
@@ -119,5 +119,4 @@ public class Joueur {
 	public void setNation(Nation nation) {
 		this.nation = nation;
 	}
-
 }

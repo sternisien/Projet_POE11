@@ -14,6 +14,7 @@ import entities.Joueur;
 import entities.Nation;
 import entities.Sexe;
 import job.GestionJoueur;
+import job.JobException;
 
 @Component
 @ManagedBean(name = "joueurController")
@@ -25,30 +26,48 @@ public class JoueurController implements Serializable {
 	@Autowired
 	GestionJoueur gestionJoueur;
 
+	// OUTPUT
+	private List<String> lstSexe;
+	private List<Nation> lstNation;
+	private List<Joueur> lstJoueur;
+	
+	// INPUT
 	private String nom;
 	private String prenom;
 	private String sexe;
 	private String nationalite;
+	private int indexNation;
+	
+	// Liste de messages d'erreur
+	private List<String> listErrorMsg;
+	
+	// Jumbotron informations
 	private String title;
 	private String description;
 	private String entete;
-	private List<String> lstSexe;
-	private List<Nation> lstNation;
-	private List<Joueur> lstJoueur;
-	private int indexNation;
+	
 
 	// *********** Constructor ***********
 
 	public JoueurController() {
 		super();
 
+		// Récupération de la liste des joueurs
+		/*
+		try {
+			this.lstJoueur = gestionJoueur.getAllJoueurs();
+		} catch (JobException jobEx) {
+			this.listErrorMsg.add(jobEx.getMessage());
+		}
+		*/
+		
+		// Ajout des genres
 		lstSexe = new ArrayList<String>();
 		lstSexe.add("HOMME");
 		lstSexe.add("FEMME");
+		
 		lstNation = new ArrayList<Nation>();
-		lstJoueur = new ArrayList<Joueur>();
-		Nation n = new Nation("FRANCE");
-		lstNation.add(n);
+
 		setTitle("Enregistrement d'un nouveau joueur");
 		setDescription(
 				"Enregistrer un nouveau joueur en indiquant son nom, son prénom," + "son sexe et sa nationalité.");
@@ -146,6 +165,15 @@ public class JoueurController implements Serializable {
 		this.lstJoueur = lstJoueur;
 	}
 
+	public List<String> getListErrorMsg() {
+		return listErrorMsg;
+	}
+
+
+	public void setListErrorMsg(List<String> listErrorMsg) {
+		this.listErrorMsg = listErrorMsg;
+	}
+	
 
 	// *********** Actions ***********
 
@@ -153,14 +181,33 @@ public class JoueurController implements Serializable {
 		return "player";
 	}
 
-	public String traitementJoueur() {
-		
-		if (Sexe.HOMME.toString().equals(sexe) || Sexe.FEMME.toString().equals(sexe)) {
-			gestionJoueur.ajoutJoueur(this.nom, this.prenom, new Nation(this.nationalite), Sexe.valueOf(this.sexe));
-		}
+	public String affichagePageAjoutJoueur() {
 
 		return "player";
 	}
 
+	public String traitementJoueur() {
+		
+		if (Sexe.HOMME.toString().equals(sexe) || Sexe.FEMME.toString().equals(sexe)) {
+			try {
+				gestionJoueur.ajoutJoueur(this.nom, this.prenom, new Nation(this.nationalite), this.sexe);
+			} catch (JobException jobEx) {
+				this.listErrorMsg.add(jobEx.getMessage());
+			}
+		}
+
+		return "player";
+	}
+	
+	public String actualiserListeJoueurs() {
+		
+		try {
+			this.lstJoueur = gestionJoueur.getAllJoueurs();
+		} catch (JobException jobEx) {
+			this.listErrorMsg.add(jobEx.getMessage());
+		}
+		
+		return "player";
+	}
 
 }

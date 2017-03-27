@@ -39,7 +39,7 @@ public class JoueurController implements Serializable {
 	private int indexNation;
 	
 	// Liste de messages d'erreur
-	private List<String> listErrorMsg;
+	private List<String> listErrorMsg = new ArrayList<String>();
 	
 	// Jumbotron informations
 	private String title;
